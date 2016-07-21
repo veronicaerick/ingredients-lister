@@ -19107,71 +19107,69 @@ var ListManager = React.createClass({
   // to input box. List is current items. {this.state.items} is updated on data change,
   // so everything is rerendered.
   render: function () {
+    var divStyle = {
+      marginTop: 10
+    };
+
+    var headingStyle = {};
+    // background-color: #0000, but instead its dynamically passed
+    if (this.props.headingColor) {
+      headingStyle.background = this.props.headingColor;
+    }
+
     return React.createElement(
       'div',
-      null,
+      { style: divStyle, className: 'col-sm-4' },
       React.createElement(
-        'h3',
-        null,
-        this.props.title
-      ),
-      React.createElement(
-        'form',
-        { onSubmit: this.handleSubmit },
-        React.createElement('input', { onChange: this.onChange, value: this.state.newItemText }),
+        'div',
+        { className: 'panel panel-primary' },
         React.createElement(
-          'button',
-          null,
-          'Add'
-        )
-      ),
-      React.createElement(List, { items: this.state.items })
+          'div',
+          { style: headingStyle, className: 'panel-heading' },
+          React.createElement(
+            'h3',
+            null,
+            this.props.title
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'row panel-body' },
+          React.createElement(
+            'form',
+            { onSubmit: this.handleSubmit },
+            React.createElement(
+              'div',
+              { className: 'col-sm-9' },
+              React.createElement('input', { className: 'form-control', onChange: this.onChange, value: this.state.newItemText })
+            ),
+            React.createElement(
+              'div',
+              { className: 'col-sm-2' },
+              React.createElement(
+                'button',
+                { className: 'btn btn-primary' },
+                'Add'
+              )
+            )
+          )
+        ),
+        React.createElement(List, { items: this.state.items })
+      )
     );
   }
 });
 
 module.exports = ListManager;
 
-// var React = require('react');
-// var List = require('./List.jsx');
-//
-// var ListManager = React.createClass({
-//     getInitialState: function() {
-//         return {items: [], newItemText:''};
-//     },
-//     onChange: function(e) {
-//         this.setState({newItemText: e.target.value});
-//     },
-//     handleSubmit: function(e) {
-//         e.preventDefault();
-//
-//         var currentItems = this.state.items;
-//
-//         currentItems.push(this.state.newItemText);
-//
-//         this.setState({items: currentItems, newItemText:''});
-//     },
-//     render: function() {
-//         return (
-//             <div>
-//                 <h3>{this.props.title}</h3>
-//                 <form onSubmit={this.handleSubmit}>
-//                     <input onChange={this.onChange} value={this.state.newItemText} />
-//                     <button>Add</button>
-//                 </form>
-//                 <List items={this.state.items} />
-//             </div>
-//         );
-//     }
-// });
-//
-// module.exports = ListManager;
-
 },{"./List.jsx":159,"react":157}],162:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
 var ListManager = require('./components/ListManager.jsx');
 
-ReactDOM.render(React.createElement(ListManager, { title: 'Ingredients' }), document.getElementById('ingredients'));
+// reuable list components
+ReactDOM.render(React.createElement(ListManager, { title: 'Ingredients', headingColor: '#87CEEB' }), document.getElementById('ingredients'));
+ReactDOM.render(React.createElement(ListManager, { title: 'To Do', headingColor: '#38B0DE' }), document.getElementById('todo'));
+ReactDOM.render(React.createElement(ListManager, { title: 'Xmas', headingColor: '#00688B' }), document.getElementById('xmas'));
 
 },{"./components/ListManager.jsx":161,"react":157,"react-dom":1}]},{},[162]);
