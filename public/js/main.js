@@ -19168,8 +19168,9 @@ var ReactDOM = require('react-dom');
 var ListManager = require('./components/ListManager.jsx');
 
 // reuable list components
-ReactDOM.render(React.createElement(ListManager, { title: 'Ingredients', headingColor: '#87CEEB' }), document.getElementById('ingredients'));
+
+ReactDOM.render(React.createElement(ListManager, { title: 'Shopping List', headingColor: '#87CEEB' }), document.getElementById('ingredients'));
 ReactDOM.render(React.createElement(ListManager, { title: 'To Do', headingColor: '#38B0DE' }), document.getElementById('todo'));
-ReactDOM.render(React.createElement(ListManager, { title: 'Xmas', headingColor: '#00688B' }), document.getElementById('xmas'));
+ReactDOM.render(React.createElement(ListManager, { title: 'Email/Follow-up\'s', headingColor: '#00688B' }), document.getElementById('xmas'));
 
 },{"./components/ListManager.jsx":161,"react":157,"react-dom":1}]},{},[162]);
